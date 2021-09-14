@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: central-config-server
+  namespace: default
+  labels:
+    app: central-config-server
+spec:
+  selector:
+      matchLabels:
+        app: central-config-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: central-config-server
+    spec:
+      containers:
+        - name: central-config-server
+          image: glow/central-config-server:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8888
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: central-config-server
+  labels:
+    app: central-config-server
+spec:
+  selector:
+    app: central-config-server
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
+      name: http
+  type: NodePort

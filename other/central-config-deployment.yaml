@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: central-config-server
-  namespace: default
+  namespace: qa
   labels:
     app: central-config-server
 spec:
@@ -21,8 +21,8 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 8888
-            
---- 
+
+---
 kind: Service
 apiVersion: v1
 metadata:

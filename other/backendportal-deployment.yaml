@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backendportal
-  namespace: default
+  namespace: qa
 spec:
   replicas: 1 #CHANGE
   #minReadySeconds: 60
@@ -36,7 +36,7 @@ spec:
           #    memory: 128Mi
           #  limits:
           #    cpu: 400m #400m
-          #    memory: 512Mi #256Mi 
+          #    memory: 512Mi #256Mi
 ---
 kind: Service
 apiVersion: v1

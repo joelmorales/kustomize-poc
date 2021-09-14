@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+lapiVersion: apps/v1
 kind: Deployment
 metadata:
   name: central-config-server
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: central-config-server
-          image: joelmorales/central-config-server:latest
+          image: glow/central-config-server:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8888

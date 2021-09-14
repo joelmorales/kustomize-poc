@@ -18,7 +18,7 @@ spec:
       containers:
         - name: central-config-server
           image: joelmorales/central-config-server:latest
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
 

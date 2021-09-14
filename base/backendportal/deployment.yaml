@@ -24,7 +24,7 @@ spec:
       #terminationGracePeriodSeconds: 30
       containers:
         - name: backendportal
-          image: glow/backendportal:v1
+          image: glow/backendportal:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 80

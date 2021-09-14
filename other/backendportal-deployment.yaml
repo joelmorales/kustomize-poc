@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backendportal
+  namespace: default
+spec:
+  replicas: 1 #CHANGE
+  #minReadySeconds: 60
+  selector:
+    matchLabels:
+      app: backendportal
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: backendportal
+    spec:
+      restartPolicy: Always
+      #terminationGracePeriodSeconds: 30
+      containers:
+        - name: backendportal
+          image: glow/backendportal:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: env.namespace
+              value: default
+          #resources: #CHANGE
+          #  requests:
+          #    cpu: 100m
+          #    memory: 128Mi
+          #  limits:
+          #    cpu: 400m #400m
+          #    memory: 512Mi #256Mi 
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: backendportal
+spec:
+  selector:
+    app: backendportal
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30036
+  type: NodePort

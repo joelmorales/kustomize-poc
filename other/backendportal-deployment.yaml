@@ -4,7 +4,7 @@ metadata:
   name: backendportal
   namespace: qa
 spec:
-  replicas: 1 #CHANGE
+  replicas: 3 #CHANGE
   #minReadySeconds: 60
   selector:
     matchLabels:

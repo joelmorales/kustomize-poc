@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
         - name: central-config-server
-          image: glow/central-config-server:latest
-          imagePullPolicy: Never
+          image: joel.morales/central-config-server:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
 

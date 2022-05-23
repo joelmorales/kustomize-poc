@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: central-config-server
-  namespace: default
+  namespace: app
   labels:
     app: central-config-server
 spec:
@@ -26,7 +26,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: default
+  namespace: app
   name: central-config-server
   labels:
     app: central-config-server
